@@ -1,0 +1,7 @@
+version: '2'
+
+services:
+  app2:
+    image: melissapanduro/dni:frontend
+    ports:
+      - "4200:4200"

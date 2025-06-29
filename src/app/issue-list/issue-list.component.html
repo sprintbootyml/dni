@@ -1,0 +1,105 @@
+<div class="container mt-4">
+  <h2 class="mb-4 text-center text-primary">REGISTRO</h2>
+
+  <div class="mb-3 text-center">
+    <button class="btn btn-outline-primary" (click)="openDniModal()">
+      Consultar DNI
+    </button>
+  </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="dniModal" tabindex="-1" aria-labelledby="dniModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="dniModalLabel">Información del DNI</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div *ngIf="dniInfo">
+            <p><strong>Nombre:</strong> {{ dniInfo.nombres }}</p>
+            <p><strong>Apellido Paterno:</strong> {{ dniInfo.apellidoPaterno }}</p>
+            <p><strong>Apellido Materno:</strong> {{ dniInfo.apellidoMaterno }}</p>
+          </div>
+          <div *ngIf="!dniInfo">
+            <p>No se han encontrado datos del DNI.</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+<!-- Modal for editing DNI -->
+<div class="modal fade" id="editDniModal" tabindex="-1" aria-labelledby="editDniModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editDniModalLabel">Editar DNI</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control" [(ngModel)]="dniToUpdate" placeholder="Nuevo DNI" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="updateDni()">Actualizar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Botón con bolita para alternar entre activos e inactivos -->
+  <div class="mb-3 text-center">
+    <button class="btn btn-outline-info" (click)="toggleActiveInactive()">
+      <span class="badge rounded-circle" [ngClass]="showActive ? 'bg-success' : 'bg-secondary'"></span>
+      {{ showActive ? 'Mostrar Inactivos' : 'Mostrar Activos' }}
+    </button>
+  </div>
+
+  <table class="table table-bordered table-hover shadow-sm">
+    <thead class="table-light">
+      <tr>
+        <th>DNI</th>
+        <th>Nombre</th>
+        <th>Apellido Paterno</th>
+        <th>Apellido Materno</th>
+        <th>Código</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let issue of filteredIssues">
+        <td>{{ issue.dni }}</td>
+        <td>{{ issue.nombres }}</td>
+        <td>{{ issue.apellidoPaterno }}</td>
+        <td>{{ issue.apellidoMaterno }}</td>
+        <td>{{ issue.codVerifica }}</td>
+        <td>
+          <span class="badge" [class.bg-success]="issue.status === 'A'" [class.bg-secondary]="issue.status === 'I'">
+            {{ issue.status === 'A' ? 'Activo' : 'Inactivo' }}
+          </span>
+        </td>
+        <td class="text-center">
+          <button *ngIf="issue.status === 'A'" class="btn btn-outline-danger btn-sm mx-1" (click)="deleteLogical(issue.id)">
+            <i class="bi bi-trash"></i> Eliminar
+          </button>
+          <button *ngIf="issue.status === 'I'" class="btn btn-outline-success btn-sm mx-1" (click)="restoreDni(issue.id)">
+            <i class="bi bi-arrow-clockwise"></i> Restaurar
+          </button>
+
+          <button class="btn btn-warning" (click)="openEditDniModal(issue.id, issue.dni)">
+            Editar DNI
+          </button>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>
