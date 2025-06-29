@@ -1,0 +1,7 @@
+version: '2'
+
+services:
+  app2:
+    image: melissapanduro/dni:backend
+    ports:
+      - "8080:8080"

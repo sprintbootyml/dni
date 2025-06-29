@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: api-reniec
+  r2dbc:
+    url: r2dbc:postgresql://ep-lingering-silence-a5pwghow.us-east-2.aws.neon.tech/neondb?sslmode=require
+    username: neondb_owner
+    password: WaBDxmjSoG31
+
+name:
+  token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Imp1bGlvLnF1aXNwZUB2YWxsZWdyYW5kZS5lZHUucGUifQ.6M-P2QMMvKFZEeMvTUXvkOooM02N_pWqt0OdlaYW3PM
+
