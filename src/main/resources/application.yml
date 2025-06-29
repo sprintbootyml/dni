@@ -2,10 +2,9 @@ spring:
   application:
     name: api-reniec
   r2dbc:
-    url: r2dbc:postgresql://ep-lingering-silence-a5pwghow.us-east-2.aws.neon.tech/neondb?sslmode=require
+    url: r2dbc:postgresql://ep-soft-night-a8m5sezc-pooler.eastus2.azure.neon.tech/neondb?sslmode=require&channel_binding=require
     username: neondb_owner
-    password: WaBDxmjSoG31
+    password: npg_PbqYs8jfB9MV
 
 name:
-  token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Imp1bGlvLnF1aXNwZUB2YWxsZWdyYW5kZS5lZHUucGUifQ.6M-P2QMMvKFZEeMvTUXvkOooM02N_pWqt0OdlaYW3PM
-
+  token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InNwcmludGJvb3R5bWxAZ21haWwuY29tIn0.S1kLvosa7JlHDoH8WOf67hOBIN3u4gho-R-rv5q_zSs

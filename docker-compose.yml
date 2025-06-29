@@ -1,7 +1,9 @@
-version: '2'
+version: '3.8'
 
 services:
   app2:
-    image: melissapanduro/dni:backend
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "8080:8085"
