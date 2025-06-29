@@ -16,7 +16,7 @@ export interface Issue {
   providedIn: 'root',
 })
 export class IssueService {
-  private apiUrl = 'https://zany-rotary-phone-pvxx9rxx5pqfj9x-8080.app.github.dev';
+  private apiUrl = 'https://crispy-lamp-v655jjq9qpxrf6xv7-8080.app.github.dev';
 
   constructor(private http: HttpClient) {}
 
